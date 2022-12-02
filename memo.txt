@@ -1,0 +1,17 @@
+Uploading Files
+This guide walks you through the process of creating a server application that can receive HTTP multi-part file uploads.
+
+What You Will Build
+You will create a Spring Boot web application that accepts file uploads. You will also build a simple HTML interface to upload a test file.
+
+Initial dependencies:
+Spring Web, Thymeleaf
+
+1) Create an Application Class
+    To start a Spring Boot MVC application, you first need a starter. In this sample, spring-boot-starter-thymeleaf and spring-boot-starter-web are already added as dependencies.
+    To upload files with Servlet containers, you need to register a MultipartConfigElement class (which would be <multipart-config> in web.xml).
+    Thanks to Spring Boot, everything is auto-configured for you!
+
+    All you need to get started with this application is the following UploadingFilesApplication class (from src/main/java/com/example/uploadingfiles/UploadingFilesApplication.java):
+
+    As part of auto-configuring Spring MVC, Spring Boot will create a MultipartConfigElement bean and make itself ready for file uploads.
