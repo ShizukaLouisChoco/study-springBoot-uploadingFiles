@@ -36,39 +36,9 @@ Spring Web, Thymeleaf
 
 3) Creating an HTML Template
    The following Thymeleaf template (from src/main/resources/templates/uploadForm.html) shows an example of how to upload files and show what has been uploaded:
-
-   <html xmlns:th="https://www.thymeleaf.org">
-   <body>
-
-   	<div th:if="${message}">
-   		<h2 th:text="${message}"/>
-   	</div>
-
-   	<div>
-   		<form method="POST" enctype="multipart/form-data" action="/">
-   			<table>
-   				<tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>
-   				<tr><td></td><td><input type="submit" value="Upload" /></td></tr>
-   			</table>
-   		</form>
-   	</div>
-
-   	<div>
-   		<ul>
-   			<li th:each="file : ${files}">
-   				<a th:href="${file}" th:text="${file}" />
-   			</li>
-   		</ul>
-   	</div>
-
-   </body>
-   </html>COPY
    This template has three parts:
-
-   An optional message at the top where Spring MVC writes a flash-scoped message.
-
-   A form that lets the user upload files.
-
-   A list of files supplied from the backend.
+   1) An optional message at the top where Spring MVC writes a flash-scoped message.
+   2) A form that lets the user upload files.
+   3) A list of files supplied from the backend.
 
 
