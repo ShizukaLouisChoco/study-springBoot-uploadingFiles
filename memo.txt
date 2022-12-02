@@ -41,4 +41,17 @@ Spring Web, Thymeleaf
    2) A form that lets the user upload files.
    3) A list of files supplied from the backend.
 
+4) Tuning File Upload Limits
+   When configuring file uploads, it is often useful to set limits on the size of files.
+   Imagine trying to handle a 5GB file upload!
+   With Spring Boot, we can tune its auto-configured MultipartConfigElement with some property settings.
+   Add the following properties to your existing properties settings (in src/main/resources/application.properties):
+
+    The multipart settings are constrained as follows:
+   spring.servlet.multipart.max-file-size=128KB
+    spring.servlet.multipart.max-file-size is set to 128KB, meaning total file size cannot exceed 128KB.
+   spring.servlet.multipart.max-request-size=128KB
+    spring.servlet.multipart.max-request-size is set to 128KB, meaning total request size for a multipart/form-data cannot exceed 128KB.
+
+
 
