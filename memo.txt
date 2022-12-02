@@ -74,3 +74,12 @@ Spring Web, Thymeleaf
     You should then see a line resembling the following in your browser window:
 
     “You successfully uploaded <name of your file>!”
+
+7) Testing Your Application
+   There are multiple ways to test this particular feature in our application.
+   The following listing (from src/test/java/com/example/uploadingfiles/FileUploadTests.java) shows one example that uses MockMvc so that it does not require starting the servlet container:
+
+   In those tests, you use various mocks to set up the interactions with your controller and the StorageService but also with the Servlet container itself by using MockMultipartFile.
+
+   For an example of an integration test, see the FileUploadIntegrationTests class (which is in src/test/java/com/example/uploadingfiles).
+
