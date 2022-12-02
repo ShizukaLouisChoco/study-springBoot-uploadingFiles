@@ -83,3 +83,7 @@ Spring Web, Thymeleaf
 
    For an example of an integration test, see the FileUploadIntegrationTests class (which is in src/test/java/com/example/uploadingfiles).
 
+8) Summary
+   Congratulations! You have just written a web application that uses Spring to handle file uploads.
+
+
