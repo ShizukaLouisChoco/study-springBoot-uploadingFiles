@@ -86,4 +86,5 @@ Spring Web, Thymeleaf
 8) Summary
    Congratulations! You have just written a web application that uses Spring to handle file uploads.
 
-
+9) Add missing elements
+    https://github.com/spring-guides/gs-uploading-files
