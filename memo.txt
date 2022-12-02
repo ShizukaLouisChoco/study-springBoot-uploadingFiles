@@ -88,3 +88,5 @@ Spring Web, Thymeleaf
 
 9) Add missing elements
     https://github.com/spring-guides/gs-uploading-files
+
+10) It works correctly !
