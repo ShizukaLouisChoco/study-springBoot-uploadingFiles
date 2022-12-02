@@ -60,4 +60,17 @@ Spring Web, Thymeleaf
    @Configuration, @EnableAutoConfiguration, @ComponentScan
    The main() method uses Spring Boot’s SpringApplication.run() method to launch an application. Did you notice that there was not a single line of XML? There is no web.xml file, either. This web application is 100% pure Java and you did not have to deal with configuring any plumbing or infrastructure.
 
+6) Build an executable JAR
+    You can run the application
+    That runs the server-side piece that receives file uploads.
+    Logging output is displayed.
+    The service should be up and running within a few seconds.
 
+    With the server running, you need to open a browser and visit http://localhost:8080/ to see the upload form.
+    Pick a (small) file and press Upload.
+    You should see the success page from the controller.
+    If you choose a file that is too large, you will get an ugly error page.
+
+    You should then see a line resembling the following in your browser window:
+
+    “You successfully uploaded <name of your file>!”
