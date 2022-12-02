@@ -15,3 +15,60 @@ Spring Web, Thymeleaf
     All you need to get started with this application is the following UploadingFilesApplication class (from src/main/java/com/example/uploadingfiles/UploadingFilesApplication.java):
 
     As part of auto-configuring Spring MVC, Spring Boot will create a MultipartConfigElement bean and make itself ready for file uploads.
+
+2) Create a File Upload Controller
+   The initial application already contains a few classes to deal with storing and loading the uploaded files on disk. They are all located in the com.example.uploadingfiles.storage package. You will use those in your new FileUploadController. The following listing (from src/main/java/com/example/uploadingfiles/FileUploadController.java) shows the file upload controller:
+
+   The FileUploadController class is annotated with @Controller so that Spring MVC can pick it up and look for routes.
+   Each method is tagged with @GetMapping or @PostMapping to tie the path and the HTTP action to a particular controller action.
+   In this case:
+   GET /: Looks up the current list of uploaded files from the StorageService and loads it into a Thymeleaf template. It calculates a link to the actual resource by using MvcUriComponentsBuilder.
+
+   GET /files/{filename}: Loads the resource (if it exists) and sends it to the browser to download by using a Content-Disposition response header.
+
+   POST /: Handles a multi-part message file and gives it to the StorageService for saving.
+
+   *In a production scenario, you more likely would store the files in a temporary location, a database, or perhaps a NoSQL store (such as Mongo’s GridFS).
+   It is best to NOT load up the file system of your application with content.
+
+   You will need to provide a StorageService so that the controller can interact with a storage layer (such as a file system).
+   The following listing (from src/main/java/com/example/uploadingfiles/storage/StorageService.java) shows that interface:
+
+3) Creating an HTML Template
+   The following Thymeleaf template (from src/main/resources/templates/uploadForm.html) shows an example of how to upload files and show what has been uploaded:
+
+   <html xmlns:th="https://www.thymeleaf.org">
+   <body>
+
+   	<div th:if="${message}">
+   		<h2 th:text="${message}"/>
+   	</div>
+
+   	<div>
+   		<form method="POST" enctype="multipart/form-data" action="/">
+   			<table>
+   				<tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>
+   				<tr><td></td><td><input type="submit" value="Upload" /></td></tr>
+   			</table>
+   		</form>
+   	</div>
+
+   	<div>
+   		<ul>
+   			<li th:each="file : ${files}">
+   				<a th:href="${file}" th:text="${file}" />
+   			</li>
+   		</ul>
+   	</div>
+
+   </body>
+   </html>COPY
+   This template has three parts:
+
+   An optional message at the top where Spring MVC writes a flash-scoped message.
+
+   A form that lets the user upload files.
+
+   A list of files supplied from the backend.
+
+
